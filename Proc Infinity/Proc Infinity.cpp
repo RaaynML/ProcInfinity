@@ -53,7 +53,6 @@ int _tmain(int nArgs, _TCHAR* cvArgs[]) try
 		return -1;
 	}
 
-	while (true) {};
 
 	//If the program needs arguments,
 	//Find the end of the program's path, split the string after 
