@@ -54,10 +54,8 @@ int _tmain(int nArgs, _TCHAR* cvArgs[]) try
 	}
 
 
-	//If the program needs arguments,
 	//Find the end of the program's path, split the string after 
 	//the SPACE after ".exe", then pass the target's args to CreateProcess
-
 	auto end_of_target_str = filename.find(L".exe "); //copy subtring AFTER ".exe"
 
 	//npos is string.find's response for "not found"
@@ -116,13 +114,7 @@ int _tmain(int nArgs, _TCHAR* cvArgs[]) try
 	//SetPriorityClass(GetCurrentProcess(), IDLE_PRIORITY_CLASS)
 
 	
-	/*Set the process affinity to the first 8 cores if ccx_num is '0',
-	** 1 to set to the second 8 cores,
-	**'2' to set to the first 4 cores,
-	**'3' to set to the second 4 cores,
-	**'4' to set to the last 4 cores.
-	** the third 4 cores are intentionally unsued */
-	switch (ccx_choice) //switch more like swift
+	switch (ccx_choice)
 	{
 	case '0':
 		SetProcessAffinityMask(GetCurrentProcess(), 0x00FF);
@@ -139,8 +131,9 @@ int _tmain(int nArgs, _TCHAR* cvArgs[]) try
 	case '4':
 		SetProcessAffinityMask(GetCurrentProcess(), 0xF000);
 		break;
-	case '5':
+	case '5': //Surely it's not important
 		SetProcessAffinityMask(GetCurrentProcess(), 0x8000);
+		SetPriorityClass(GetCurrentProcess(), IDLE_PRIORITY_CLASS);
 		break;
 	case 'f':
 		SetProcessAffinityMask(GetCurrentProcess(), 0x0F00);

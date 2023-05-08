@@ -15,9 +15,9 @@ namespace rs {
 			
 			CreateProcess(
 				_filename.c_str(),
-				NULL, NULL, NULL,	//cmd line, procAttribs, threadAttribs
-				FALSE, 0, NULL,	 	//binheritHandles, creationFlags, env
-				NULL, &si, &pi	 	//workingDirectory, startupInfo, processInfo
+				NULL, NULL, NULL,				//cmd line, procAttribs, threadAttribs
+				FALSE, CREATE_NO_WINDOW, NULL,	//binheritHandles, creationFlags, env
+				NULL, &si, &pi	 				//workingDirectory, startupInfo, processInfo
 			);
 
 			//::ShowWindow(::GetConsoleWindow(), SW_HIDE);
@@ -31,9 +31,9 @@ namespace rs {
 
 			CreateProcess(
 				_filename.c_str(), _target_args.data(),
-				NULL, NULL, 		//procAttribs, threadAttribs
-				FALSE, 0, NULL,	 	//binheritHandles, creationFlags, env
-				NULL, &si, &pi	 	//workingDirectory, startupInfo, processInfo
+				NULL, NULL, 					//procAttribs, threadAttribs
+				FALSE, CREATE_NO_WINDOW, NULL,	//binheritHandles, creationFlags, env
+				NULL, &si, &pi	 				//workingDirectory, startupInfo, processInfo
 			);
 
 			::ShowWindow(::GetConsoleWindow(), SW_HIDE);
