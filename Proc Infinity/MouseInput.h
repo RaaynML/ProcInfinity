@@ -5,8 +5,6 @@
 
 class MouseInput {
 public:
-	//The constructor prepares the command prompt to recieve mouse input.
-	
 	MouseInput(auto& _consolein) {
 		console = &_consolein;
 		this->mouse_pos.X = 0;
@@ -36,8 +34,6 @@ public:
 	COORD mouse_pos;
 	bool mouse_clicked;
 	
-	//The mouse event record that is returned by GetMouseEvent
 	MOUSE_EVENT_RECORD mouse_event;
-	//console is a reference to the console window
 	HANDLE console;
 };

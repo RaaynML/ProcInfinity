@@ -1,14 +1,13 @@
 #pragma once
 #include <string_view>
-#include <windows.h>    //MultiByteToWideChar
 #include <stdexcept>
 
 
 namespace rs {
 	//wrapper for CreateProcess
-	class SafeCreateProcess {
+	class AutoCreateProcess {
 	public:
-		SafeCreateProcess(std::wstring _filename) {
+		AutoCreateProcess(std::wstring _filename) {
 			STARTUPINFO si;
 			ZeroMemory(&si, sizeof(si));
 			si.cb = sizeof(si);
@@ -24,7 +23,7 @@ namespace rs {
 			//::ShowWindow(::GetConsoleWindow(), SW_HIDE);
 		}
 
-		SafeCreateProcess(std::wstring _filename, std::wstring _target_args) {
+		AutoCreateProcess(std::wstring _filename, std::wstring _target_args) {
 			STARTUPINFO si;
 			ZeroMemory(&si, sizeof(si));
 			si.cb = sizeof(si);
@@ -37,10 +36,10 @@ namespace rs {
 				NULL, &si, &pi	 	//workingDirectory, startupInfo, processInfo
 			);
 
-			//::ShowWindow(::GetConsoleWindow(), SW_HIDE);
+			::ShowWindow(::GetConsoleWindow(), SW_HIDE);
 		}
 
-		~SafeCreateProcess() {
+		~AutoCreateProcess() {
 			//Close process and thread handles
 			if(pi.hProcess != nullptr){ CloseHandle(pi.hProcess);	}
 			if(pi.hThread != nullptr) { CloseHandle(pi.hThread);	}
