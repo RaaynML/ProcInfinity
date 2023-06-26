@@ -114,7 +114,7 @@ int _tmain(int nArgs, _TCHAR* cvArgs[]) try
 	//SetPriorityClass(GetCurrentProcess(), IDLE_PRIORITY_CLASS)
 
 	
-	switch (ccx_choice)
+	switch(ccx_choice) //at -O2 this is generally a LUT
 	{
 	case '0':
 		SetProcessAffinityMask(GetCurrentProcess(), 0x00FF);
@@ -131,7 +131,7 @@ int _tmain(int nArgs, _TCHAR* cvArgs[]) try
 	case '4':
 		SetProcessAffinityMask(GetCurrentProcess(), 0xF000);
 		break;
-	case '5': //Surely it's not important
+	case '9': //Surely it's not important
 		SetProcessAffinityMask(GetCurrentProcess(), 0x8000);
 		SetPriorityClass(GetCurrentProcess(), IDLE_PRIORITY_CLASS);
 		break;
